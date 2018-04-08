@@ -3,6 +3,7 @@ require 'test_helper'
 class SiteLayoutTest < ActionDispatch::IntegrationTest
 
   test "layout links" do
+    # root
     get(root_path)
     assert_template('static_pages/home')
     assert_select('a[href=?]', root_path, { count: 2 })
@@ -10,8 +11,14 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select('a[href=?]', about_path)
     assert_select('a[href=?]', contact_path)
     assert_select('a[href=?]', signup_path)
+
+    # contact page
     get(contact_path)
-    assert_select("title", full_title("Contact"))
+    assert_select('title', full_title("Contact"))
+
+    # signup page
+    get(signup_path)
+    assert_select('title', full_title('Sign up'))
   end
 
 end
