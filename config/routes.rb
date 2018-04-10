@@ -8,5 +8,6 @@ Rails.application.routes.draw do
 
   # user pages
   get('/signup',  { to: 'users#new'})
+  resources(:users)
 
 end
