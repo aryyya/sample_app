@@ -59,4 +59,17 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test('email addresses should be unique') do
+    duplicate_user = @user.dup
+    duplicate_user.email = @user.email.upcase
+    @user.save
+    assert_not(duplicate_user.valid?)
+  end
+
+  test("email address should be saved in lowercase") do
+    User.create(name: 'Example User', email: 'UPPERCASE_USER@EXAMPLE.COM')
+    user = User.find_by(email: 'uppercase_user@example.com')
+    assert_equal(user.email, 'uppercase_user@example.com')
+  end
+
 end
