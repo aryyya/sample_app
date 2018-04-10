@@ -73,4 +73,14 @@ class UserTest < ActiveSupport::TestCase
     assert_equal('uppercase_user@example.com', @user.email)
   end
 
+  test('password should be present') do
+    @user.password = ' ' * 8
+    assert_not(@user.valid?)
+  end
+
+  test('password should not be too short') do
+    @user.password = 'xyz'
+    assert_not(@user.valid?)
+  end
+
 end
