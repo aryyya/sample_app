@@ -67,9 +67,10 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test("email address should be saved in lowercase") do
-    User.create(name: 'Example User', email: 'UPPERCASE_USER@EXAMPLE.COM')
-    user = User.find_by(email: 'uppercase_user@example.com')
-    assert_equal(user.email, 'uppercase_user@example.com')
+    @user.email = 'UPPERCASE_USER@EXAMPLE.COM'
+    @user.save
+    @user.reload
+    assert_equal('uppercase_user@example.com', @user.email)
   end
 
 end
