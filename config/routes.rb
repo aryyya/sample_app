@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get('/contact', { to: 'static_pages#contact' })
 
   # user pages
-  get('/signup',  { to: 'users#new'})
+  get('/signup',  { to: 'users#new' })
+  post('/signup', { to: 'users#create' })
   resources(:users)
 
 end
