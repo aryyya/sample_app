@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @form_action = signup_path
   end
 
   def show
@@ -21,6 +22,15 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = "Edits successfully saved!"
+    else
+      render('edit')
+    end
   end
 
 private
