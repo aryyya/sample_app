@@ -16,7 +16,7 @@ $gray-medium-light: #eaeaea;
 // universal
 
 body {
-  padding-top: 60px;
+  padding-top: 65px;
 }
 
 section {
@@ -197,4 +197,19 @@ input {
   .form-control {
     color: $state-danger-text;
   }
+}
+
+.checkbox {
+  margin-top: 25px;
+  margin-bottom: 10px;
+
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
 }
