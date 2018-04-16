@@ -12,3 +12,10 @@ jim:
   name: Jim Halpert
   email: jim.halpert@example.com
   password_digest: <%= User.digest('password') %>
+
+<% 247.times do |n| %>
+user_<%= n %>:
+  name: <%= "User {n}" %>
+  email: <%= "user-#{n}@example.com"  %>
+  password_digest: <%= User.digest('password') %>
+<% end %>
