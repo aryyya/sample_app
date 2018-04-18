@@ -1,6 +1,2 @@
-User#account_activation
-Hi <%= @user.name %>,
-
-Welcome to the Sample App! Click on the link below to activate your account:
-
-<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
+Hello <%= @user.name %>,
+Thanks for registering! Visit the following link to activate your account: <%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

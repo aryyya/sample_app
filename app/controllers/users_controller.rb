@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       @user.send_activation_email
-      flash[:info] = 'Please check your email to activate your account'
+      flash[:info] = "Thanks for registering, #{@user.name}! Please activate your account via the link sent to '#{@user.email}'."
       redirect_to(root_url)
     else
       render('new')
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated"
+      flash[:success] = "Your profile was updated."
       redirect_to(@user)
     else
       render('edit')
@@ -62,7 +62,7 @@ class UsersController < ApplicationController
   def destroy
     user_to_delete = User.find(params[:id])
     user_to_delete.destroy
-    flash[:success] = "User '#{user_to_delete.name}' was deleted"
+    flash[:success] = "The user '#{user_to_delete.name}' was deleted."
     redirect_to(users_url)
   end
 
@@ -82,7 +82,7 @@ private
   def logged_in_user
     unless logged_in?
       store_location
-      flash[:danger] = "Please log in"
+      flash[:danger] = "Please log in."
       redirect_to(login_url)
     end
   end
