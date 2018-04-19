@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  # Hooks.
+
   before_action(
     :logged_in_user,
     only: [
@@ -31,6 +33,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
     redirect_to(root_url) and return unless @user.activated?
   end
   
@@ -95,7 +98,7 @@ private
 
   # Confirms an admin user.
   def admin_user
-    redirect_to(root_url) unless current_user && current_user.admin?
+    redirect_to(root_url) unless current_user&.admin?
   end
 
 end
