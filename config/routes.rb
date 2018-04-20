@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'password_resets/new'
-
-  get 'password_resets/edit'
-
   # static
   root('static_pages#home')
   get('/help', to: 'static_pages#help')
@@ -21,9 +17,14 @@ Rails.application.routes.draw do
   delete('/logout', to: 'sessions#destroy')
 
   # account activations
-  resources(:account_activations, only: [:edit])
+  resources(:account_activations, only: %i[edit])
 
   # password resets
-  resources(:password_resets, only: [:new, :create, :edit, :update])
+  get('password_resets/new')
+  get('password_resets/edit')
+  resources(:password_resets, only: %i[new create edit update])
+
+  # microposts
+  resources(:microposts, only: %i[create destroy])
 
 end
