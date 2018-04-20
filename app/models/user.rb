@@ -71,6 +71,11 @@ class User < ApplicationRecord
     return reset_sent_at < 1.hour.ago
   end
 
+  # Defines a proto-feed.
+  def feed
+    return Micropost.where('user_id = ?', id)
+  end
+
 private
 
   # Converts email to all lower-case.
