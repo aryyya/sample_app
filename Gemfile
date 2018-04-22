@@ -3,10 +3,12 @@ source 'https://rubygems.org'
 gem 'bcrypt',                  '3.1.11'
 gem 'bootstrap-sass',          '3.3.7'
 gem 'bootstrap-will_paginate', '1.0.0'
+gem 'carrierwave',             '1.2.2'
 gem 'coffee-rails',            '4.2.2'
 gem 'faker',                   '1.7.3'
 gem 'jbuilder',                '2.7.0'
 gem 'jquery-rails',            '4.3.1'
+gem 'mini_magick',             '4.7.0'
 gem 'puma',                    '3.9.1'
 gem 'rails',                   '5.1.4'
 gem 'sass-rails',              '5.0.6'
@@ -35,5 +37,6 @@ group :test do
 end
 
 group :production do
-  gem 'pg', '0.18.4'
+  gem 'fog', '1.42'
+  gem 'pg',  '0.18.4'
 end

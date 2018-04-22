@@ -19,8 +19,7 @@ class UsersController < ApplicationController
     :admin_user,
     only: [
       :destroy
-    ]
-  )
+    ])
 
   def index
     @users = User.where(activated: true).paginate(page: params[:page])
